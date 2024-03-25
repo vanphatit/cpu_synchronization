@@ -11,25 +11,33 @@ class Program
         while (true) // Vòng lặp vô hạn để liên tục đọc lựa chọn của người dùng
         {
             Console.WriteLine("\nENTER YOUR CHOICE\n");
-            n = Convert.ToInt32(Console.ReadLine()); // Nhận lựa chọn từ người dùng
-            switch (n)
+            try
             {
-                case 1:
-                    if ((mutex == 1) && (empty != 0)) // Kiểm tra có thể sản xuất hay không
-                        Producer();
-                    else
-                        Console.WriteLine("BUFFER IS FULL");
-                    break;
-                case 2:
-                    if ((mutex == 1) && (full != 0)) // Kiểm tra có thể tiêu thụ hay không
-                        Consumer();
-                    else
-                        Console.WriteLine("BUFFER IS EMPTY");
-                    break;
-                case 3:
-                    Environment.Exit(0); // Thoát chương trình
-                    break;
+                n = Convert.ToInt32(Console.ReadLine()); // Nhận lựa chọn từ người dùng
+                switch (n)
+                {
+                    case 1:
+                        if ((mutex == 1) && (empty != 0)) // Kiểm tra có thể sản xuất hay không
+                            Producer();
+                        else
+                            Console.WriteLine("BUFFER IS FULL");
+                        break;
+                    case 2:
+                        if ((mutex == 1) && (full != 0)) // Kiểm tra có thể tiêu thụ hay không
+                            Consumer();
+                        else
+                            Console.WriteLine("BUFFER IS EMPTY");
+                        break;
+                    case 3:
+                        Environment.Exit(0); // Thoát chương trình
+                        break;
+                }
             }
+            catch (Exception)
+            {
+                Console.WriteLine("Please input the number in menu above");
+            }    
+            
         }
     }
 
